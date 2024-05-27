@@ -1,0 +1,66 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Wed Nov 16 20:10:16 2022
+# Process ID: 1152
+# Current directory: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14944 C:\Users\Pancho\Desktop\Universidad\Arquitectura de Computadores\WW\proyecto-grupo-16\Proyecto Base.xpr
+# Log file: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/vivado.log
+# Journal file: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/Proyecto Base.xpr}
+update_compile_order -fileset sources_1
+add_files -norecurse {{C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/Proyecto Base.srcs/sources_1/new/Timer.vhd}}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/Proyecto Base.runs/impl_1/Basys3.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/Proyecto Base.runs/impl_1/Basys3.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+close_hw_manager
+close [ open {C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/Proyecto Base.srcs/sources_1/new/DeMuxOut.vhd} w ]
+add_files {{C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/Proyecto Base.srcs/sources_1/new/DeMuxOut.vhd}}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -jobs 4
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/Proyecto Base.runs/impl_1/Basys3.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/Proyecto Base.runs/impl_1/Basys3.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/WW/proyecto-grupo-16/Proyecto Base.runs/impl_1/Basys3.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]

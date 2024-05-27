@@ -1,0 +1,23 @@
+DATA:
+
+
+t 1
+CODE: // Potencia
+
+
+MOV A,0
+MOV B,7
+PUSH B
+MOV A,(t)
+//MOV B,5
+//PUSH B
+//MOV B,3
+//PUSH B
+//MOV B,0
+//MOV A,(FFFEh)
+// MOV B,(0)
+
+
+end:
+JMP end // 15
+

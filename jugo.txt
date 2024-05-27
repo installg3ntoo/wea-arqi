@@ -1,0 +1,186 @@
+DATA:
+
+led  0
+sw   0
+dis  0
+btn  0
+sec  0
+msec 0
+usec 0
+lcd  0
+
+j1 8
+j2 2
+j3 4
+j4 10h
+j5 1
+
+// Variable que cuenta cuantos microsegundos pasaron
+// desde que alguien apretó el boton.
+
+tcount 0 
+
+CODE:
+
+
+print_inicio:
+    MOV (dis),B
+    JMP next_inicio
+
+wait_inicio:
+
+    MOV A,(btn)
+
+    CMP A,(j1)
+    JEQ print_1
+    CMP A,(j2)
+    JEQ print_2
+    CMP A,(j3)
+    JEQ print_3
+    CMP A,(j4)
+    JEQ print_4
+    CMP A,(j5)
+    JEQ print_5
+    JMP next_inicio
+
+    print_1:
+        MOV B,1
+        JMP print_inicio
+
+    print_2:
+        MOV B,2
+        JMP print_inicio
+
+    print_3:
+        MOV B,3
+        JMP print_inicio
+
+    print_4:
+        MOV B,4
+        JMP print_inicio
+
+    print_5:
+        MOV B,5
+        JMP print_inicio
+
+    next_inicio:
+
+        MOV A,(sw)
+        CMP A,1000000000000000b
+        JGE start_game
+        JMP wait_inicio
+
+
+start_game:
+    MOV A,3
+    MOV (dis),A
+    
+    loop_start:
+        MOV A,(sec)
+    s_loop:
+        MOV B,(sec)
+        CMP A,B
+        JNE sub_dis
+        JMP s_loop
+
+    sub_dis:
+        MOV A,(dis)
+        SUB A,1
+        MOV (dis),A
+        CMP A,0
+        JEQ wait_press
+        JMP loop_start
+
+
+    add_tcount:
+        MOV A,(tcount)
+        ADD A,1
+        MOV (tcount),A
+        JMP wait_start
+
+
+
+    wait_press:
+
+
+        wait_start:
+            MOV B,(msec)
+        
+        wait_loop:
+            MOV A,(msec)
+            CMP A,B
+            JNE add_tcount
+
+        // logica cuando se apreta un boton
+        MOV A,(btn)
+        CMP A,0
+        // si alguien apreto un boton
+        JNE def_winner
+        //sino loopea
+        JMP wait_loop
+
+
+    // botones estan en el registro A
+    def_winner:
+
+        CMP A,(j1)
+        JEQ winner_1
+        CMP A,(j2)
+        JEQ winner_2
+        CMP A,(j3)
+        JEQ winner_3
+        CMP A,(j4)
+        JEQ winner_4
+        CMP A,(j5)
+        JEQ winner_5
+        // si hay mas ganadores? empate?
+
+
+        winner_1:
+            MOV A,1
+            MOV (dis),A
+            JMP wait_new_game
+        
+        winner_2:
+            MOV A,2
+            MOV (dis),A
+            JMP wait_new_game
+        
+        winner_3:
+            MOV A,3
+            MOV (dis),A
+            JMP wait_new_game
+
+        winner_4:
+                MOV A,4
+                MOV (dis),A
+                JMP wait_new_game
+        
+        winner_5:
+                MOV A,5
+                MOV (dis),A
+                JMP wait_new_game
+
+    wait_new_game:
+
+        MOV A,(tcount)
+        MOV (led),A
+        MOV A,(sw)
+        CMP A,0111111111111111b
+        JLE delete_data
+        JMP wait_new_game
+
+
+    delete_data:
+        MOV A,0
+        MOV B,0
+
+        MOV (tcount),A
+        MOV (dis),A
+        MOV (led),A
+        JMP wait_inicio
+
+end:
+    MOV A,FFh
+    MOV (dis),A
+    JMP end

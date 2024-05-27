@@ -1,0 +1,58 @@
+DATA:
+
+led  0
+sw   0
+dis  0
+btn  0
+sec  0
+msec 0
+usec 0
+lcd  0
+
+
+j1 8
+j2 2
+j3 4
+j4 10h
+j5 1
+
+
+btn1 0
+
+point1 0
+point2 0
+
+CODE:
+
+
+start_loop_btn:
+        MOV A,(btn)
+        MOV (btn1),A
+
+        loop_btn:
+            CALL test1
+            MOV A,(btn)
+            CMP A,(btn1)
+            JNE apretado
+            JMP loop_btn
+
+
+    apretado:
+        MOV A,(btn)
+        CMP A,(j1)
+        JEQ add_point_p1
+        JMP start_loop_btn
+
+
+
+test1:
+    MOV A,(point1)
+    MOV (dis),A
+    RET
+
+
+add_point_p1:
+    MOV A,(point1)
+    ADD A,1
+    MOV (point1),A
+    JMP start_loop_btn

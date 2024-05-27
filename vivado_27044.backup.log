@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Wed Oct 19 14:37:13 2022
+# Process ID: 27044
+# Current directory: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent26212 C:\Users\Pancho\Desktop\Universidad\Arquitectura de Computadores\proyecto-grupo-16\Proyecto Base.xpr
+# Log file: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16/vivado.log
+# Journal file: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16/Proyecto Base.xpr}
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16'
+INFO: [Project 1-313] Project file moved from 'C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/IIC2343-Proyecto' since last save.
+WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16/Proyecto Base.gen/sources_1', nor could it be found using path 'C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/IIC2343-Proyecto/Proyecto Base.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2021.1/data/ip'.
+open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 1135.379 ; gain = 0.000
+update_compile_order -fileset sourcesexireset_run synth_1
+launch_runs impl_1 -jobs 4
+[Sat Oct 22 20:47:02 2022] Launched synth_1...
+Run output will be captured here: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16/Proyecto Base.runs/synth_1/runme.log
+[Sat Oct 22 20:47:02 2022] Launched impl_1...
+Run output will be captured here: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16/Proyecto Base.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 4
+[Sat Oct 22 20:56:12 2022] Launched synth_1...
+Run output will be captured here: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16/Proyecto Base.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 4
+[Sat Oct 22 20:57:34 2022] Launched impl_1...
+Run output will be captured here: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16/Proyecto Base.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 4
+[Sat Oct 22 20:59:43 2022] Launched impl_1...
+Run output will be captured here: C:/Users/Pancho/Desktop/Universidad/Arquitectura de Computadores/proyecto-grupo-16/Proyecto Base.runs/impl_1/runme.log
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Oct 25 18:27:33 2022...

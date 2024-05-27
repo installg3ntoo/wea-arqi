@@ -1,0 +1,138 @@
+Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
+| Date         : Sun Nov 20 21:18:13 2022
+| Host         : DESKTOP-OTP65T0 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Basys3_control_sets_placed.rpt
+| Design       : Basys3
+| Device       : xc7a35t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    60 |
+|    Minimum number of control sets                        |    60 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    47 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    60 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     4 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     2 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    48 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              18 |           13 |
+| No           | No                    | Yes                    |              39 |           13 |
+| No           | Yes                   | No                     |             130 |           34 |
+| Yes          | No                    | No                     |              70 |           25 |
+| Yes          | No                    | Yes                    |             112 |           28 |
+| Yes          | Yes                   | No                     |              16 |            5 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-----------------------+-----------------------------------------------------+-----------------------------------------------------+------------------+----------------+--------------+
+|      Clock Signal     |                    Enable Signal                    |                   Set/Reset Signal                  | Slice Load Count | Bel Load Count | Bels / Slice |
++-----------------------+-----------------------------------------------------+-----------------------------------------------------+------------------+----------------+--------------+
+|  clock_BUFG           |                                                     | inst_Programmer/bussy_sinc_reg_n_0                  |                1 |              1 |         1.00 |
+|  rx_state_reg[enable] | inst_Programmer/inst_UART/state_reg[2][0]           |                                                     |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/inst_UART/sample                    | inst_Programmer/inst_UART/rx_state[bits][7]_i_1_n_0 |                1 |              4 |         4.00 |
+|  rx_state_reg[enable] |                                                     |                                                     |                3 |              6 |         2.00 |
+|  clk_IBUF_BUFG        |                                                     | inst_Programmer/inst_UART/sample_i_1_n_0            |                2 |              6 |         3.00 |
+|  rx_state_reg[enable] | inst_Programmer/inst_UART/state_reg[4][0]           |                                                     |                2 |              7 |         3.50 |
+|  clk_IBUF_BUFG        |                                                     | inst_Programmer/clear                               |                2 |              7 |         3.50 |
+|  rx_state_reg[enable] | inst_Programmer/inst_UART/state_reg[4]_0[0]         |                                                     |                3 |              8 |         2.67 |
+|  rx_state_reg[enable] | inst_Programmer/inst_UART/E[0]                      |                                                     |                3 |              8 |         2.67 |
+|  rx_state_reg[enable] | inst_Programmer/inst_UART/state_reg[0]_0[0]         |                                                     |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG        |                                                     |                                                     |               10 |             12 |         1.20 |
+|  clk_IBUF_BUFG        | inst_Programmer/inst_UART/rx_state[bits][7]_i_2_n_0 | inst_Programmer/inst_UART/rx_state[bits][7]_i_1_n_0 |                4 |             12 |         3.00 |
+|  clock_BUFG           | inst_ROM/enableB                                    | inst_Programmer/clear                               |                4 |             16 |         4.00 |
+|  clock_BUFG           | inst_ROM/load                                       | inst_Programmer/clear                               |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG        | Timer1/stimer                                       | inst_Programmer/clear                               |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG        | Timer1/eqOp                                         | inst_Programmer/clear                               |                4 |             16 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[1]_0                               | inst_Programmer/clear                               |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG        | Timer1/mtimer                                       | inst_Programmer/clear                               |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG        |                                                     | inst_Debouncer4/counter[0]_i_1__3_n_0               |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG        |                                                     | inst_Debouncer3/counter[0]_i_1__2_n_0               |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG        |                                                     | inst_Debouncer2/counter[0]_i_1__1_n_0               |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG        |                                                     | inst_Debouncer1/counter[0]_i_1__0_n_0               |                4 |             16 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg_1_sn_1                             | inst_Programmer/clear                               |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG        |                                                     | inst_Debouncer0/counter[0]_i_1_n_0                  |                4 |             16 |         4.00 |
+|  clk_IBUF_BUFG        |                                                     | inst_Display_Controller/clear                       |                5 |             17 |         3.40 |
+|  clk_IBUF_BUFG        |                                                     | inst_Clock_Divider/clear                            |                7 |             27 |         3.86 |
+|  clock_BUFG           |                                                     | inst_Programmer/clear                               |               10 |             31 |         3.10 |
+|  rx_state_reg[enable] | inst_Programmer/inst_UART/state_reg[0]_1[0]         |                                                     |               12 |             35 |         2.92 |
+|  clock_BUFG           | inst_ROM/reg_reg[11]_9                              |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[11]_10                             |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[11]_8                              |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[9]_3                               |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[9]                                 |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[9]_1                               |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[9]_0                               |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[10]_0                              |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[11]                                |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[9]_2                               |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[11]_1                              |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[10]_1                              |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[11]_2                              |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[11]_0                              |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[10]                                |                                                     |               16 |             64 |         4.00 |
+|  clock_BUFG           | inst_ROM/reg_reg[10]_2                              |                                                     |               16 |             64 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_13                        |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_10                        |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_12                        |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_0                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_3                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_7                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_15                        |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_11                        |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_2                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_6                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_1                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_5                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_8                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_9                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_4                         |                                                     |               23 |             92 |         4.00 |
+|  clk_IBUF_BUFG        | inst_Programmer/ready_reg_14                        |                                                     |               23 |             92 |         4.00 |
++-----------------------+-----------------------------------------------------+-----------------------------------------------------+------------------+----------------+--------------+
+
+

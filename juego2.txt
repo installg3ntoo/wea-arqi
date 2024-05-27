@@ -1,0 +1,266 @@
+DATA:
+
+led  0
+sw   0
+dis  0
+btn  0
+sec  0
+msec 0
+usec 0
+lcd  0
+
+
+j1 8
+j2 2
+j3 4
+j4 10h
+j5 1
+
+
+btn1 0
+
+point1 0
+point2 0
+
+j1_go 74
+      49
+      32
+      71
+      79
+      33
+      00
+
+
+j2_go 74
+      50
+      32
+      71
+      79
+      33
+      00
+
+CODE:
+
+
+print_inicio:
+    MOV (dis),B
+    JMP next_inicio
+
+wait_inicio:
+
+    MOV A,(btn)
+
+    CMP A,(j1)
+    JEQ print_1
+    CMP A,(j2)
+    JEQ print_2
+    JMP next_inicio
+
+    print_1:
+        MOV B,1
+        JMP print_inicio
+
+    print_2:
+        MOV B,2
+        JMP print_inicio
+
+    next_inicio:
+
+        MOV A,(sw)
+        CMP A,1000000000000000b
+        JGE start_game
+        JMP wait_inicio
+
+
+start_game:
+
+    MOV A,3
+    MOV (dis),A
+    
+    loop_start:
+        MOV A,(sec)
+    s_loop:
+        MOV B,(sec)
+        CMP A,B
+        JNE sub_dis
+        JMP s_loop
+
+    sub_dis:
+        MOV A,(dis)
+        SUB A,1
+        MOV (dis),A
+        CMP A,0
+        JEQ start_game1
+        JMP loop_start
+
+
+
+sub_sec1:
+    MOV A,(dis)
+    SUB A,1
+    MOV (dis),A
+    CMP A,0
+    JEQ transition
+    JMP start_loop_game1
+
+
+add_point_p1:
+    MOV A,(point1)
+    ADD A,1
+    MOV (point1),A
+    JMP start_loop_btn
+
+
+start_game1:
+
+    MOV A,5
+    MOV (dis),A
+
+    //MOV A,j1_go
+    //CALL lcd_string
+
+    start_loop_game1:
+        MOV B,(sec)
+        loop_game1:
+            MOV A,(sec)
+            CMP A,B
+            JNE sub_sec1
+            JMP loop_btn
+
+            // if son iguales (segundos de B y de A)
+
+            // checkear boton pulsado
+
+            start_loop_btn:
+                MOV A,(btn)
+                MOV (btn1),A
+                JMP loop_game1
+
+                loop_btn:
+                    MOV A,(btn)
+                    CMP A,(btn1)
+                    JNE apretado
+                    JMP loop_game1
+
+
+            apretado:
+                MOV A,(btn)
+                CMP A,(j5)
+                JEQ add_point_p1
+                JMP start_loop_btn
+
+
+
+
+transition:
+
+    MOV A,3
+    MOV (dis),A
+    
+    loop_start2:
+        MOV A,(sec)
+    s_loop2:
+        MOV B,(sec)
+        CMP A,B
+        JNE sub_dis2
+        JMP s_loop2
+
+    sub_dis2:
+        MOV A,(dis)
+        SUB A,1
+        MOV (dis),A
+        CMP A,0
+        JEQ start_game2
+        JMP loop_start2
+
+
+
+
+sub_sec2:
+    MOV A,(dis)
+    SUB A,1
+    MOV (dis),A
+    CMP A,0
+    JEQ end
+    JMP start_loop_game2
+
+
+add_point_p2:
+    MOV A,(point2)
+    ADD A,1
+    MOV (point2),A
+    JMP start_loop_btn2
+
+
+start_game2:
+
+    MOV A,5
+    MOV (dis),A
+
+    start_loop_game2:
+        MOV B,(sec)
+        loop_game2:
+            MOV A,(sec)
+            CMP A,B
+            JNE sub_sec2
+            JMP loop_btn2
+
+            // if son iguales (segundos de B y de A)
+
+            // checkear boton pulsado
+
+            start_loop_btn2:
+                MOV A,(btn)
+                MOV (btn1),A
+                JMP loop_game2
+
+                loop_btn2:
+                    MOV A,(btn)
+                    CMP A,(btn1)
+                    JNE apretado2
+                    JMP loop_game2
+
+
+            apretado2:
+                MOV A,(btn)
+                CMP A,(j5)
+                JEQ add_point_p2
+                JMP start_loop_btn2
+
+
+end:
+    MOV A,(point1)
+    MOV B,(point2)
+    CMP A,B
+    JGE winner_1
+    JMP winner_2
+
+winner_1:
+    MOV A,1
+    MOV (dis),A
+    MOV B,(point1)
+    MOV (led),B
+    JMP wait_new_game
+
+winner_2:
+    MOV A,2
+    MOV (dis),A
+    MOV B,(point2)
+    MOV (led),B
+    JMP wait_new_game
+
+wait_new_game:
+    MOV A,(sw)
+    CMP A,0111111111111111b
+    JLE delete_data
+    JMP wait_new_game
+
+delete_data:
+    MOV A,0
+    MOV B,0
+    MOV (led),A
+    MOV (dis),A
+    MOV (point1),A
+    MOV (point2),A
+    MOV (btn1),A
+    JMP print_inicio

@@ -1,0 +1,22 @@
+
+DATA:
+
+
+led 0
+switches 0
+display 0
+botones 0
+segundos 0
+Msegundos 0
+Usegundos 0
+
+
+CODE: // Potencia
+
+
+end:
+MOV A,(segundos)
+MOV (display),A
+MOV B,(switches)
+MOV (led),B
+JMP end

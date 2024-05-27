@@ -1,0 +1,25 @@
+DATA:
+
+
+CODE: // Potencia
+
+
+CALL func // GUARDA  2
+MOV A,3 // FUNC + 1 
+MOV A,6
+JMP end
+
+
+func:
+  MOV A,9
+  MOV B,5
+  MOV A,1
+  MOV A,1
+  MOV A,1 //
+  RET
+
+MOV A,7 // 12
+
+end:
+JMP end // 15
+
